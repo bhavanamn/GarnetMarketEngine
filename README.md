@@ -1,10 +1,11 @@
 # Stock Market Prediction Web App
 
-This repository contains a simple web application for stock market prediction. The application is built using Flask, HTML, and Bootstrap. It provides an interface for viewing different stock indices and is designed to be a starting point for building more advanced stock prediction tools. It is purely made for college project.
+This repository contains a simple web application for stock market prediction. The application is built using Flask, HTML, and Bootstrap. It provides an interface for viewing different stock indices and is designed to be a starting point for building more advanced stock prediction tools. It is purely made for a college project.
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Dependencies](#dependencies)
 - [Contributing](#contributing)
@@ -19,15 +20,43 @@ The Stock Market Prediction web app is a basic web application that allows users
 - Nifty Financial Services
 - Sensex
 
-To be added more...
+In addition to the current features, the project has future plans for expansion, including the following:
+
+- Integration of Machine Learning Models for Prediction
+- Displaying Charts and Visualizations
+- Incorporating Tradingview Technical Analysis
 
 The application's user interface is minimal and user-friendly, thanks to the Bootstrap framework. Users can access different indices through the navigation menu on the left-hand side of the web page.
 
-## Need To Be Added
+## Getting Started
 
-- Machine Learning Models
-- Charts
-- Tradingview Technicals
+To run this application locally, follow these steps:
+
+1. Clone this repository to your local machine:
+
+   ```
+   git clone https://github.com/AdityaDKale/GarnetMarketEngine.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```
+   cd GarnetMarketEngine/
+   ```
+
+3. Install the required dependencies (Flask):
+
+   ```
+   pip install -r requirements.txt
+   ```
+
+4. Run the Flask application:
+
+   ```
+   python main.py
+   ```
+
+5. Open a web browser and visit `http://localhost:81` to view the web application. (Kept on host=0.0.0.0 and port=81 for easy replit setup)
 
 ## Usage
 
