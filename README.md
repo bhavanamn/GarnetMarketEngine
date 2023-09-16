@@ -71,8 +71,6 @@ The following dependencies are used in this project:
 - [Flask](https://flask.palletsprojects.com/en/2.1.x/): A micro web framework for Python.
 - [Bootstrap](https://getbootstrap.com/): A popular HTML, CSS, and JavaScript framework for building responsive and mobile-first web applications.
 
-These dependencies are included in the project, but it's always a good practice to check for updates and ensure you have the latest versions installed.
-
 ## Contributing
 
 Contributions to this project are welcome. If you have any ideas or improvements you'd like to see implemented, please open an issue or submit a pull request.
