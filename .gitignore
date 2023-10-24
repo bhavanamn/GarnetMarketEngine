@@ -1,2 +1,3 @@
 venv/
 src/models
+src/min_max_values.json

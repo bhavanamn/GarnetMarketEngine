@@ -15,6 +15,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv1D, MaxPooling1D, LSTM, Dense, Flatten
 from sklearn.metrics import mean_squared_error
 from tensorflow.keras.models import save_model
+import json
+
 
 def main():
 
@@ -116,6 +118,23 @@ def main():
     scaled_niftyfin, min_niftyfin_val, max_niftyfin_val = min_max_scaling_with_bias(df_niftyfin[col],bias_min=1000, bias_max=1000)
     scaled_reliance, min_reliance_val, max_reliance_val = min_max_scaling_with_bias(df_reliance[col],bias_min=1000, bias_max=1000)
     print(f'\x1b[1;32mData Scaled Successfully\x1b[0m\n')
+
+    # Save minimum and maximum values in a dictionary
+    min_max_values = {
+        'nifty50': {'min': min_nifty50_val, 'max': max_nifty50_val},
+        'niftybank': {'min': min_niftybank_val, 'max': max_niftybank_val},
+        'niftyfin': {'min': min_niftyfin_val, 'max': max_niftyfin_val},
+        'reliance': {'min': min_reliance_val, 'max': max_reliance_val}
+    }
+
+    # Specify the path where you want to save the JSON file
+    output_file_path = 'min_max_values.json'
+
+    # Write the dictionary to a JSON file
+    with open(output_file_path, 'w') as json_file:
+        json.dump(min_max_values, json_file)
+
+    print(f"\x1b[1;32Minimum and Maximum values saved to {output_file_path}\x1b[0m\n")
 
     print(f'\n\x1b[1;36mPreprocessing the Data\x1b[0m\n')
 
