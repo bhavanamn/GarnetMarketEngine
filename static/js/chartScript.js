@@ -1,29 +1,30 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Define your chart container element
-    const chartContainer = document.getElementById("line-chart");
+    // Create a container for the chart
+    const chartContainer = document.getElementById("chart-container");
 
-    // Create a new Lightweight Charts instance
+    // Create a new chart
     const chart = LightweightCharts.createChart(chartContainer, {
         width: chartContainer.clientWidth,
         height: chartContainer.clientHeight,
     });
 
-    // Create a new line series
-    const series = chart.addLineSeries();
+    // Create line series for the data and prediction
+    const lineSeries = chart.addLineSeries({ color: 'blue' });
+    const predSeries = chart.addLineSeries({ color: 'red' });
 
-    // Define the data for the chart (you can replace this with your actual data)
-    const data = [
-        { time: "2023-10-01", value: 100 },
-        { time: "2023-10-02", value: 110 },
-        { time: "2023-10-03", value: 120 },
-        // Add more data points as needed
-    ];
+    // Fetch data for the "data" series
+    fetch('/chart-data')
+        .then(response => response.json())
+        .then(data => {
+            // Set the data for the "data" series
+            lineSeries.setData(data);
+        });
 
-    // Apply the data to the line series
-    series.setData(data);
-
-    // Adjust the chart layout (optional)
-    chart.timeScale().fitContent();
+    // Fetch data for the "prediction" series
+    fetch('/pred')
+        .then(response => response.json())
+        .then(data => {
+            // Set the data for the "prediction" series
+            predSeries.setData(data);
+        });
 });
-
