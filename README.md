@@ -18,7 +18,7 @@ The Stock Market Prediction web app is a basic web application that allows users
 - Nifty 50
 - Nifty Bank
 - Nifty Financial Services
-- Sensex
+- Reliance
 
 In addition to the current features, the project has future plans for expansion, including the following:
 
