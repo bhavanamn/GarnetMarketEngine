@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Create a new chart
         const chart = LightweightCharts.createChart(chartContainer, {
             width: chartContainer.clientWidth,
-            height: chartContainer.clientHeight,
+            height: chartContainer.clientHeight - 15,
         });
 
         // Create line series for the data and prediction
