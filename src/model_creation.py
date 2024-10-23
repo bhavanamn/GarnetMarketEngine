@@ -54,6 +54,12 @@ def main():
     df_niftybank = df_niftybank.reset_index()
     df_niftyfin = df_niftyfin.reset_index()
     df_reliance = df_reliance.reset_index()
+
+    df_nifty50.columns = df_nifty50.columns.get_level_values(0)
+    df_niftybank.columns = df_niftybank.columns.get_level_values(0)
+    df_niftyfin.columns = df_niftyfin.columns.get_level_values(0)
+    df_reliance.columns = df_reliance.columns.get_level_values(0)
+
     # Remove Missing Values
 
     df_nifty50.dropna(inplace=True)
@@ -134,27 +140,26 @@ def main():
     # Save minimum and maximum values in a dictionary
     min_max_values = {
         "nifty50": {
-            "min": float(min_nifty50_val.iloc[0]),
-            "max": float(max_nifty50_val.iloc[0]),
+            "min": min_nifty50_val,
+            "max": max_nifty50_val,
         },
         "niftybank": {
-            "min": float(min_niftybank_val.iloc[0]),
-            "max": float(max_niftybank_val.iloc[0]),
+            "min": min_niftybank_val,
+            "max": max_niftybank_val,
         },
         "niftyfin": {
-            "min": float(min_niftyfin_val.iloc[0]),
-            "max": float(max_niftyfin_val.iloc[0]),
+            "min": min_niftyfin_val,
+            "max": max_niftyfin_val,
         },
         "reliance": {
-            "min": float(min_reliance_val.iloc[0]),
-            "max": float(max_reliance_val.iloc[0]),
+            "min": min_reliance_val,
+            "max": max_reliance_val,
         },
     }
 
     # Specify the path where you want to save the JSON file
     output_file_path = "min_max_values.json"
 
-    print(float(min_nifty50_val.iloc[0]))
     # Write the dictionary to a JSON file
     with open(output_file_path, "w") as json_file:
         json.dump(min_max_values, json_file)
@@ -347,27 +352,27 @@ def main():
     y_pred_niftybank = model_niftybank.predict(X_niftybank_test)
     y_pred_niftyfin = model_niftyfin.predict(X_niftyfin_test)
     y_pred_reliance = model_reliance.predict(X_reliance_test)
-    #
-    # # Calculate the MSE
-    # mse_nifty50 = mean_squared_error(y_nifty50_test, y_pred_nifty50)
-    # mse_niftybank = mean_squared_error(y_niftybank_test, y_pred_niftybank)
-    # mse_niftyfin = mean_squared_error(y_niftyfin_test, y_pred_niftyfin)
-    # mse_reliance = mean_squared_error(y_reliance_test, y_pred_reliance)
-    #
-    # # Print the MSE
-    # print(
-    #     f"\n\n\x1b[1;36mMean Squared Error (Nifty 50): \x1b[1;32m{mse_nifty50}\x1b[0m"
-    # )
-    # print(
-    #     f"\x1b[1;36mMean Squared Error (Nifty Bank): \x1b[1;32m{mse_niftybank}\x1b[0m"
-    # )
-    # print(
-    #     f"\x1b[1;36mMean Squared Error (Nifty Financial Services): \x1b[1;32m{mse_niftyfin}\x1b[0m"
-    # )
-    # print(f"\x1b[1;36mMean Squared Error (Reliance): \x1b[1;32m{mse_reliance}\x1b[0m\n")
-    #
-    # print(f"\n\x1b[1;36mSaving Models\x1b[0m\n")
-    #
+
+    # Calculate the MSE
+    mse_nifty50 = mean_squared_error(y_nifty50_test, y_pred_nifty50)
+    mse_niftybank = mean_squared_error(y_niftybank_test, y_pred_niftybank)
+    mse_niftyfin = mean_squared_error(y_niftyfin_test, y_pred_niftyfin)
+    mse_reliance = mean_squared_error(y_reliance_test, y_pred_reliance)
+
+    # Print the MSE
+    print(
+        f"\n\n\x1b[1;36mMean Squared Error (Nifty 50): \x1b[1;32m{mse_nifty50}\x1b[0m"
+    )
+    print(
+        f"\x1b[1;36mMean Squared Error (Nifty Bank): \x1b[1;32m{mse_niftybank}\x1b[0m"
+    )
+    print(
+        f"\x1b[1;36mMean Squared Error (Nifty Financial Services): \x1b[1;32m{mse_niftyfin}\x1b[0m"
+    )
+    print(f"\x1b[1;36mMean Squared Error (Reliance): \x1b[1;32m{mse_reliance}\x1b[0m\n")
+
+    print(f"\n\x1b[1;36mSaving Models\x1b[0m\n")
+
     src_directory = ""
 
     # Check if "models" directory exists in "src"; if not, create it
