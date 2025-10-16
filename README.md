@@ -41,7 +41,7 @@ To run this application locally, follow these steps:
 1. Clone this repository to your local machine:
 
    ```
-   git clone https://github.com/AdityaDKale/GarnetMarketEngine.git
+   https://github.com/bhavanamn/GarnetMarketEngine.git
    ```
 
 2. Navigate to the project directory:
